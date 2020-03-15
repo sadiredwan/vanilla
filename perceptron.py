@@ -1,9 +1,7 @@
 import numpy as np
 
 class NeuralNetwork():
-    
     def __init__(self):
-
         np.random.seed(1)
         # bias from -1 to 1, mean 0
         self.weights = 2 * np.random.random((3, 1)) - 1
@@ -28,7 +26,6 @@ class NeuralNetwork():
 
 
 if __name__ == "__main__":
-
     neural_network = NeuralNetwork()
 
     # print("Random starting weights: ")
@@ -39,7 +36,6 @@ if __name__ == "__main__":
                                 [0,1,1]])
 
     training_outputs = np.array([[0,1,1,0]]).T
-
     neural_network.train(training_inputs, training_outputs, 10000)
 
     # print("weights after training: ")
