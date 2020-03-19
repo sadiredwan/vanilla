@@ -31,10 +31,7 @@ if __name__ == "__main__":
 	# print("Random starting weights: ")
 	# print(neural_network.weights)
 
-	training_inputs = np.array([[0,0,1],
-								[1,1,1],
-								[1,0,1],
-								[0,1,1]])
+	training_inputs = np.array([[0,0,1], [1,1,1], [1,0,1], [0,1,1]])
 
 	training_outputs = np.array([[0,1,1,0]]).T
 	neural_network.train(training_inputs, training_outputs, 10000)
