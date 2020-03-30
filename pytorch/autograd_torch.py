@@ -1,6 +1,15 @@
 import torch
 import torch.nn as nn
 
+class LinearRegression(nn.Module):
+    def __init__(self, input_dim, output_dim):
+        super(LinearRegression, self).__init__()
+        # define diferent layers
+        self.lin = nn.Linear(input_dim, output_dim)
+    
+    def forward(self, x):
+        return self.lin(x)
+
 if __name__ == '__main__':
 
 	X = torch.tensor([[1], [2], [3], [4]], dtype=torch.float32)
@@ -12,7 +21,8 @@ if __name__ == '__main__':
 
 	input_size = n_features
 	output_size = n_features
-	model = nn.Linear(input_size, output_size)
+	# model = nn.Linear(input_size, output_size)
+	model = LinearRegression(input_size, output_size)
 
 	print(f'Prediction before training: f(5) = {model(X_test).item():.3f}')
 
@@ -30,7 +40,7 @@ if __name__ == '__main__':
 		optimizer.zero_grad()
 
 		if epoch % 10 == 0:
-			[w, b] = model.parameters() # unpack parameters
+			[w, b] = model.parameters()
 			print('epoch ', epoch+1, ': w = ', w[0][0].item(), ' loss = ', l)
 
 	print(f'Prediction after training: f(5) = {model(X_test).item():.3f}')
